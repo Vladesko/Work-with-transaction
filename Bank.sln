@@ -5,7 +5,9 @@ VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{A7277A36-BC25-4331-AC91-7A360709E4ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{EC017480-327A-4D4A-8A57-837B5A255CCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{EC017480-327A-4D4A-8A57-837B5A255CCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{15DA0183-EDA0-455F-8C6C-EAF012A14548}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +19,17 @@ Global
 		{EC017480-327A-4D4A-8A57-837B5A255CCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC017480-327A-4D4A-8A57-837B5A255CCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC017480-327A-4D4A-8A57-837B5A255CCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15DA0183-EDA0-455F-8C6C-EAF012A14548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15DA0183-EDA0-455F-8C6C-EAF012A14548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15DA0183-EDA0-455F-8C6C-EAF012A14548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15DA0183-EDA0-455F-8C6C-EAF012A14548}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EC017480-327A-4D4A-8A57-837B5A255CCE} = {A7277A36-BC25-4331-AC91-7A360709E4ED}
+		{15DA0183-EDA0-455F-8C6C-EAF012A14548} = {A7277A36-BC25-4331-AC91-7A360709E4ED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C3B3916C-5172-4A01-9408-C2C74CB4E390}
