@@ -117,4 +117,7 @@ src/.vs/config/applicationhost.config
 .idea/
 
 
+#json files
+
 .json
+launchSettings.json
