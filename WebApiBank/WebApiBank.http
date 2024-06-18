@@ -1,4 +1,4 @@
-@WebApiBank_HostAddress = http://localhost:5007
+@WebApiBank_HostAddress = http://localhost:5276
 
 GET {{WebApiBank_HostAddress}}/weatherforecast/
 Accept: application/json

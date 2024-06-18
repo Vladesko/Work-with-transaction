@@ -6,11 +6,11 @@ namespace WebApiBank.Commons
     public class AccountMapper
     {
         public CreateAccountViewModel MapWith(CreateAccountDto dto) =>
-            new() 
-            {
-                Name = dto.Name,
-                Nickname = dto.Nickname,
-            };
+          new()
+          {
+              Name = dto.Name,
+              Nickname = dto.Nickname,
+          };
 
         public UpdateAccountViewModel MapWith(UpdateAccountDto dto) =>
             new()

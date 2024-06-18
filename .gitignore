@@ -121,3 +121,5 @@ src/.vs/config/applicationhost.config
 
 .json
 launchSettings.json
+appsettings.json
+appsettings.Development.json
