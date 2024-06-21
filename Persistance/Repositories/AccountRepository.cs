@@ -1,8 +1,10 @@
-﻿using Application.Interfaces;
-using Application.Models;
+﻿using Application.Interfaces.AccountsInterfaces;
+using Application.Models.AccountsViewModels;
+using Application.Models.TransactionsViewModels;
 using Domain;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Entities;
+using System.Data.SqlClient;
 
 namespace Persistance.Repositories
 {
@@ -57,6 +59,11 @@ namespace Persistance.Repositories
                  var account = await context.Accounts
                 .Where(a => a.Id == model.Id).
                  ExecuteUpdateAsync(a => a.SetProperty(a => a.Nickname, model.Nickname));
+        }
+        public async Task TransferByNicknameAsync(TransactionsByNicknameViewModel model)
+        {
+            var str = context.Database.GetConnectionString();
+
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace WebApiBank.Models
+﻿namespace WebApiBank.Models.AccountsDto
 {
     public class UpdateAccountDto
     {

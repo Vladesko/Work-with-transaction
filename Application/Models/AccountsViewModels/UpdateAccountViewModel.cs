@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Models
+namespace Application.Models.AccountsViewModels
 {
-    public class CreateAccountViewModel
+    public class UpdateAccountViewModel
     {
-        public string Name { get; set; } = string.Empty;
+        public Guid Id { get; set; }
         public string Nickname { get; set; } = string.Empty;
     }
 }

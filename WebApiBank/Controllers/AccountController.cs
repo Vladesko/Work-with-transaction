@@ -1,8 +1,10 @@
-﻿using Application.Interfaces;
+﻿using Application.Interfaces.AccountsInterfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApiBank.Commons;
-using WebApiBank.Models;
+using WebApiBank.Commons.Mapping;
+using WebApiBank.Models.AccountsDto;
+using WebApiBank.Models.TransactionsDto;
 
 namespace WebApiBank.Controllers
 {
@@ -24,7 +26,7 @@ namespace WebApiBank.Controllers
             return Ok(result);
         }
         [HttpPost]
-        public async Task<IActionResult> Create(CreateAccountDto dto)
+        public async Task<IActionResult> Create([FromBody] CreateAccountDto dto)
         {
             var result = await accountService.CreateAccountAsync(new AccountMapper().MapWith(dto));
             return Ok(result);
@@ -36,7 +38,7 @@ namespace WebApiBank.Controllers
             return NoContent();
         }
         [HttpPut]
-        public async Task<IActionResult> Update(UpdateAccountDto dto)
+        public async Task<IActionResult> Update([FromBody] UpdateAccountDto dto)
         {
             await accountService.UpdateNicknameAsync(new AccountMapper().MapWith(dto));
             return NoContent();

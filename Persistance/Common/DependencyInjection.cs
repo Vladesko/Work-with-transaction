@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.Interfaces.AccountsInterfaces;
+using Application.Interfaces.TransactionInterfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +20,7 @@ namespace Persistance.Common
             });
 
             services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddTransient<ITransactionsRepository, TransactionsRepository>();
 
             return services;
         }

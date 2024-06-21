@@ -1,14 +1,14 @@
-﻿using Application.Models;
+﻿using Application.Models.AccountsViewModels;
 using Domain;
 
-namespace Application.Interfaces
+namespace Application.Interfaces.AccountsInterfaces
 {
-    public interface IAccountRepository
+    public interface IAccountService
     {
         Task<List<AccountsViewModel>> GetAccountsAsync();
         Task<AccountDetailsViewModel> GetAccountByIdAsync(Guid id);
         Task<Guid> CreateAccountAsync(CreateAccountViewModel model);
         Task RemoveAccountByIdAsync(Guid id);
-        Task UpdateNicknameById(UpdateAccountViewModel model);
+        Task UpdateNicknameAsync(UpdateAccountViewModel model);
     }
 }
