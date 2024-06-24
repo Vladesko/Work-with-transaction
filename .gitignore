@@ -123,3 +123,6 @@ src/.vs/config/applicationhost.config
 launchSettings.json
 appsettings.json
 appsettings.Development.json
+
+#docker
+docker-compose.yml

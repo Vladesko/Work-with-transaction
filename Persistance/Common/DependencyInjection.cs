@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces.AccountsInterfaces;
+using Application.Interfaces.CacheInterfaces;
 using Application.Interfaces.TransactionInterfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -19,8 +20,15 @@ namespace Persistance.Common
                 options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
             });
 
+            services.AddDistributedMemoryCache();
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = configuration.GetConnectionString("RedisConnection");
+            });
+
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddTransient<ITransactionsRepository, TransactionsRepository>();
+            services.AddSingleton<ICacheRepository, CacheRepository>();
 
             return services;
         }
