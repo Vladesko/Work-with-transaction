@@ -1,5 +1,6 @@
 using Application.Common;
 using Persistance.Common;
+using WebApiBank.Commons.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCustomExceptions();
 
 app.UseHttpsRedirection();
 
