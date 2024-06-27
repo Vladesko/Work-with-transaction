@@ -33,7 +33,7 @@ namespace WebApiBank.Commons.Middleware
             if (result == string.Empty)
                 result = JsonSerializer.Serialize(new { error = exception.Message });
 
-            return context.Response.WriteAsync(result);
+            await context.Response.WriteAsync(result);
         }
     }
 }
