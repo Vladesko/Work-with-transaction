@@ -3,14 +3,18 @@ using Application.Interfaces.CacheInterfaces;
 using Application.Models.AccountsViewModels;
 using Application.Models.TransactionsViewModels;
 using Domain;
+using FluentValidation;
 
 namespace Application.Services
 {
     internal class AccountService(IAccountRepository accountRepository,
-                                  ICacheRepository cache) : IAccountService
+                                  ICacheRepository cache,
+                                  IAccountValidator validator) : IAccountService
     {
         private readonly IAccountRepository accountRepository = accountRepository;
         private readonly ICacheRepository cache = cache;
+        private readonly IAccountValidator validator = validator;
+
         public async Task<List<AccountsViewModel>> GetAccountsAsync()
         {
             var accounts = await cache.GetAccountsAsync();
@@ -36,6 +40,8 @@ namespace Application.Services
         }
         public async Task<Guid> CreateAccountAsync(CreateAccountViewModel model)
         {
+            await validator.ValidateAsync(model);
+
             var result = await accountRepository.CreateAccountAsync(model);
             return result;
         }
@@ -45,6 +51,8 @@ namespace Application.Services
         }
         public async Task UpdateNicknameAsync(UpdateAccountViewModel model)
         {
+            await validator.ValidateAsync(model);
+
             await accountRepository.UpdateNicknameById(model);
         }
         public async Task TransferMoneyByNicknameAsync(TransactionsByNicknameViewModel model)
