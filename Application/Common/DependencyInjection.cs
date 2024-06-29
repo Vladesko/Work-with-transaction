@@ -13,22 +13,20 @@ namespace Application.Common
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            services.AddFluentValidation();
+            services.AddValidators();
 
             services.AddScoped<IAccountService, AccountService>();
             services.AddTransient<ITransactionsService, TransactiosService>();
 
             return services;
         }
-        private static IServiceCollection AddFluentValidation(this IServiceCollection services) 
+        private static IServiceCollection AddValidators(this IServiceCollection services)
         {
-            services.AddValidatorsFromAssemblies([Assembly.GetExecutingAssembly()]);
-
-            services.AddScoped<IValidator<CreateAccountViewModel>, CreateAccountValidator>();
-            services.AddScoped<IValidator<UpdateAccountViewModel>, UpdateAccountValidator>();
+            services.AddTransient<IValidator<CreateAccountViewModel>, CreateAccountValidator>();
+            services.AddTransient<IValidator<UpdateAccountViewModel>, UpdateAccountValidator>();
 
             services.AddScoped<IAccountValidator, AccountValidator>();
-            
+
             return services;
         }
     }

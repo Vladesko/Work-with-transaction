@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using Application.Common.Exceptions;
+using System.Net;
 using System.Text.Json;
 
 namespace WebApiBank.Commons.Middleware
@@ -22,18 +23,24 @@ namespace WebApiBank.Commons.Middleware
 
         private async Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
-            var code = HttpStatusCode.InternalServerError;
-            string result = string.Empty;
+            var statusCode = HttpStatusCode.InternalServerError;
+            string message = string.Empty;
 
-            //TODO: Add switch for exceptions 
+            switch (exception)
+            {
+                case CustomValidationException validationException:
+                    statusCode = HttpStatusCode.BadRequest;
+                    message = JsonSerializer.Serialize(validationException.Message);
+                    break;
+            }
 
-            context.Response.StatusCode = (int)code;
+            context.Response.StatusCode = (int)statusCode;
             context.Response.ContentType = "application/json";
 
-            if (result == string.Empty)
-                result = JsonSerializer.Serialize(new { error = exception.Message });
+            if (message == string.Empty)
+                message = JsonSerializer.Serialize(new { error = exception.Message });
 
-            await context.Response.WriteAsync(result);
+            await context.Response.WriteAsync(message);
         }
     }
 }
