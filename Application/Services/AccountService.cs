@@ -1,9 +1,6 @@
 ﻿using Application.Interfaces.AccountsInterfaces;
 using Application.Interfaces.CacheInterfaces;
 using Application.Models.AccountsViewModels;
-using Application.Models.TransactionsViewModels;
-using Domain;
-using FluentValidation;
 
 namespace Application.Services
 {
