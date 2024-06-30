@@ -55,9 +55,5 @@ namespace Application.Services
 
             await accountRepository.UpdateNicknameById(model);
         }
-        public async Task TransferMoneyByNicknameAsync(TransactionsByNicknameViewModel model)
-        {
-            await accountRepository.TransferByNicknameAsync(model);
-        }
     }
 }

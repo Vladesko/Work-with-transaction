@@ -60,10 +60,5 @@ namespace Persistance.Repositories
                 .Where(a => a.Id == model.Id).
                  ExecuteUpdateAsync(a => a.SetProperty(a => a.Nickname, model.Nickname));
         }
-        public async Task TransferByNicknameAsync(TransactionsByNicknameViewModel model)
-        {
-            var str = context.Database.GetConnectionString();
-
-        }
     }
 }

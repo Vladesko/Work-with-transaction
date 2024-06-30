@@ -11,6 +11,5 @@ namespace Application.Interfaces.AccountsInterfaces
         Task<Guid> CreateAccountAsync(CreateAccountViewModel model);
         Task RemoveAccountByIdAsync(Guid id);
         Task UpdateNicknameById(UpdateAccountViewModel model);
-        Task TransferByNicknameAsync(TransactionsByNicknameViewModel model);
     }
 }
