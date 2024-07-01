@@ -1,4 +1,5 @@
 ﻿using Application.Common.Validations.AccountValidation;
+using Application.Interfaces.AccountsInterfaces;
 using Application.Services;
 using Persistance.Entities;
 using Persistance.Repositories;
@@ -6,23 +7,26 @@ using Persistance.Repositories;
 
 namespace Tests.Accounts.Common
 {
-    internal abstract class TestCommandBase : IDisposable
+    public abstract class TestCommandBase : IDisposable
     {
-        protected readonly AccountDbContext context = AccountsContextFactory.Create();
-        public AccountService GetService()
+        internal readonly AccountDbContext context = AccountsContextFactory.Create();
+        internal IAccountService GetService()
         {
-            var repositry = new AccountRepository(context);
+            var repositry = GetRepository();
 
-            var validator = new AccountValidator(new CreateAccountValidator(), new UpdateAccountValidator());
+            var validator = GetValidator();
 
             //Cache might be null, because it not use for commands
             var service = new AccountService(repositry, null, validator);
 
             return service;
         }
+
         public void Dispose()
         {
             AccountsContextFactory.Destroy(context);
         }
+        private IAccountValidator GetValidator() => new AccountValidator(new CreateAccountValidator(), new UpdateAccountValidator());
+        private IAccountRepository GetRepository() => new AccountRepository(context);
     }
 }
