@@ -50,15 +50,25 @@ namespace Persistance.Repositories
         }
         public async Task RemoveAccountByIdAsync(Guid id)
         {
-            var account = await context.Accounts
-                .Where(a => a.Id == id)
-                .ExecuteDeleteAsync();
+            var command = from a in context.Accounts
+                          where a.Id == id
+                          select a;
+
+            context.Accounts.Remove(command.First());
+            await context.SaveChangesAsync();
         }
         public async Task UpdateNicknameById(UpdateAccountViewModel model)
         {
-                 var account = await context.Accounts
-                .Where(a => a.Id == model.Id).
-                 ExecuteUpdateAsync(a => a.SetProperty(a => a.Nickname, model.Nickname));
+             var command = from a in context.Accounts
+                           where a.Id == model.Id
+                           select a;
+
+            foreach (var account in command)
+            {
+                account.Nickname = model.Nickname;
+                break;
+            }
+            await context.SaveChangesAsync();
         }
     }
 }
