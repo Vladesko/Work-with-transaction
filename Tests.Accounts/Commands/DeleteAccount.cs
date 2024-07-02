@@ -16,7 +16,7 @@ namespace Tests.Accounts.Commands
             await service.RemoveAccountByIdAsync(id);
 
             //Assert
-            Assert.Null(await context.Accounts.FirstOrDefaultAsync(a => a.Id == id));
+            Assert.Null(context.Accounts.FirstOrDefault(a => a.Id == id));
         }
     }
 }
