@@ -28,16 +28,16 @@ namespace Persistance.Repositories
             });
 
         }
-        public async Task<List<AccountsViewModel>> GetAccountsAsync()
+        public async Task<IEnumerable<AccountsViewModel>> GetAccountsAsync()
         {
             string cacheData = await cache.GetStringAsync(KEYFORLISTACCOUNTS);
             if (string.IsNullOrEmpty(cacheData))
                 return null;
 
-            var accounts = JsonSerializer.Deserialize<List<AccountsViewModel>>(cacheData);
+            var accounts = JsonSerializer.Deserialize<IEnumerable<AccountsViewModel>>(cacheData);
             return accounts;
         }
-        public async Task SetListOfAccountsToCacheAsync(List<AccountsViewModel> accounts)
+        public async Task SetListOfAccountsToCacheAsync(IEnumerable<AccountsViewModel> accounts)
         {
             string jsonAccounts = JsonSerializer.Serialize(accounts);
 

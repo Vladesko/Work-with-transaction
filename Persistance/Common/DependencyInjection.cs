@@ -4,8 +4,10 @@ using Application.Interfaces.TransactionInterfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Persistance.Common.Interfaces;
 using Persistance.Entities;
 using Persistance.Repositories;
+using Persistance.Repositories.AccountRepositories;
 
 namespace Persistance.Common
 {
@@ -26,8 +28,15 @@ namespace Persistance.Common
                 options.Configuration = configuration.GetConnectionString("RedisConnection");
             });
 
+            //Accounts
             services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<ICommandAccountsRepository, AccountsCommands>();
+            services.AddScoped<IQueryAccountsRepository, AccountsQueries>();
+
+            //Transaction
             services.AddTransient<ITransactionsRepository, TransactionsRepository>();
+
+            //Cache
             services.AddSingleton<ICacheRepository, CacheRepository>();
 
             return services;

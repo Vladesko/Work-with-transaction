@@ -3,6 +3,7 @@ using Application.Interfaces.AccountsInterfaces;
 using Application.Services;
 using Persistance.Entities;
 using Persistance.Repositories;
+using Persistance.Repositories.AccountRepositories;
 
 
 namespace Tests.Accounts.Common
@@ -27,6 +28,7 @@ namespace Tests.Accounts.Common
             AccountsContextFactory.Destroy(context);
         }
         private IAccountValidator GetValidator() => new AccountValidator(new CreateAccountValidator(), new UpdateAccountValidator());
-        private IAccountRepository GetRepository() => new AccountRepository(context);
+        private IAccountRepository GetRepository() => new 
+            AccountRepository(context, new AccountsCommands(context), new AccountsQueries(context));
     }
 }
