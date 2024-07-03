@@ -9,8 +9,8 @@ namespace Application.Interfaces.CacheInterfaces
 {
     public interface ICacheRepository
     {
-        Task<List<AccountsViewModel>> GetAccountsAsync();
-        Task SetListOfAccountsToCacheAsync(List<AccountsViewModel> accounts);
+        Task<IEnumerable<AccountsViewModel>> GetAccountsAsync();
+        Task SetListOfAccountsToCacheAsync(IEnumerable<AccountsViewModel> accounts);
         Task<AccountDetailsViewModel> GetAccountByIdFromCahceAsync(Guid id);
         Task SetAccountDetailsViewModelAsync(Guid id, AccountDetailsViewModel model);
     }

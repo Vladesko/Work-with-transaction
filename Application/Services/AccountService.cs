@@ -12,7 +12,7 @@ namespace Application.Services
         private readonly ICacheRepository cache = cache;
         private readonly IAccountValidator validator = validator;
 
-        public async Task<List<AccountsViewModel>> GetAccountsAsync()
+        public async Task<IEnumerable<AccountsViewModel>> GetAccountsAsync()
         {
             var accounts = await cache.GetAccountsAsync();
             if (accounts != null)
