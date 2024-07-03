@@ -1,4 +1,5 @@
 ﻿using Application.Common.Exceptions;
+using Persistance.Common.Exceptions;
 using System.Net;
 using System.Text.Json;
 
@@ -31,6 +32,10 @@ namespace WebApiBank.Commons.Middleware
                 case CustomValidationException validationException:
                     statusCode = HttpStatusCode.BadRequest;
                     message = JsonSerializer.Serialize(validationException.Message);
+                    break;
+                case AccountNotFoundException accountNotFoundException:
+                    statusCode = HttpStatusCode.NotFound;
+                    message = JsonSerializer.Serialize(accountNotFoundException.Message);
                     break;
             }
 
