@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Tests.Accounts.Common;
+using Tests.Accounts.TestService.Common;
 
-namespace Tests.Accounts.Commands
+namespace Tests.Accounts.TestService.Commands
 {
-    public class DeleteAccount :TestCommandBase
+    public class DeleteAccount : TestCommandBase
     {
         [Fact]
         public async Task RemoveAccount_Success()
