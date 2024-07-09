@@ -1,6 +1,6 @@
 ﻿using Application.Models.AccountsViewModels;
 using Microsoft.EntityFrameworkCore;
-using Tests.Accounts.Common;
+using Tests.Accounts.TestService.Common;
 
 namespace Tests.Accounts.Commands
 {

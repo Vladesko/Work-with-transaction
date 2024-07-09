@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tests.Accounts.Common
+namespace Tests.Accounts.TestService.Common
 {
     public static class AccountsContextFactory
     {
@@ -41,16 +41,16 @@ namespace Tests.Accounts.Common
         {
             //Add **Test** Accounts
             context.Accounts.AddRange(
-            new Account() 
+            new Account()
             {
                 Id = IdForFirstAccount,
                 Name = NameForFirstAccount,
                 Nickname = NameForFirstAccount,
                 AmountOfMoney = MoneyOfFirstAccount,
             },
-            new Account() 
+            new Account()
             {
-                Id = IdForSecondAccount, 
+                Id = IdForSecondAccount,
                 Name = NameForSecondAccount,
                 Nickname = NicknameForSecondAccount,
                 AmountOfMoney = MoneyOfSecondAccount

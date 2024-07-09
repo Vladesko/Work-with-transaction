@@ -1,8 +1,8 @@
 ﻿using Application.Models.AccountsViewModels;
 using Microsoft.EntityFrameworkCore;
-using Tests.Accounts.Common;
+using Tests.Accounts.TestService.Common;
 
-namespace Tests.Accounts.Commands
+namespace Tests.Accounts.TestService.Commands
 {
     public class UpdateAccount : TestCommandBase
     {
@@ -23,7 +23,7 @@ namespace Tests.Accounts.Commands
 
             //Assert
             Assert.NotNull(context.Accounts.FirstOrDefaultAsync(
-                a => a.Id == AccountsContextFactory.IdForFirstAccount && 
+                a => a.Id == AccountsContextFactory.IdForFirstAccount &&
                 a.Nickname == NICKNAME_FOR_UPDATE));
         }
     }
