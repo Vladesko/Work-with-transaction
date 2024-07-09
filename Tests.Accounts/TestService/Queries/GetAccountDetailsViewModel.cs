@@ -27,8 +27,11 @@ namespace Tests.Accounts.TestService.Queries
             var idForGetAccount = Guid.NewGuid();
 
             //Act
-            cacheMock.Setup(r => r.GetAccountByIdFromCahceAsync(idForGetAccount)).ReturnsAsync((AccountDetailsViewModel)null);
-            repositoryMock.Setup(r => r.GetAccountByIdAsync(idForGetAccount)).ReturnsAsync(model);
+            cacheMock.Setup(r => r.GetAccountByIdFromCahceAsync(idForGetAccount)).
+                ReturnsAsync((AccountDetailsViewModel)null);
+
+            repositoryMock.Setup(r => r.GetAccountByIdAsync(idForGetAccount)).
+                ReturnsAsync(model);
 
             var result = await service.GetAccountByIdAsync(idForGetAccount);
 
