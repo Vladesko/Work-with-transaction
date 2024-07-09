@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces.AccountsInterfaces;
 using Application.Interfaces.CacheInterfaces;
+using Application.Models.AccountsViewModels;
 using Application.Services;
 using Moq;
 using Tests.Accounts.TestService.Common;
@@ -17,12 +18,19 @@ namespace Tests.Accounts.TestService.Queries
         public async Task GetListOfAccount_WithValidData_Success()
         {
             //Arrange
-
-
+            var accounts = GetAccounts();
 
             //Act
+            cacheMock.Setup(r => r.GetAccountsAsync()).
+                ReturnsAsync((IEnumerable<AccountsViewModel>)null);
+
+            repositoryMock.Setup(r => r.GetAccountsAsync()).
+                ReturnsAsync(accounts);
+
+            var result = await service.GetAccountsAsync();
 
             //Assert
+            Assert.Equal(accounts, result);
         }
     }
 }
